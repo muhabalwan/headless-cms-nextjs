@@ -20,7 +20,6 @@ const Page = (props) => {
         return {__html: html};
     }
 
-      console.log('page -->', page);
     return (
     <Layout pages={props.pages} getSelectedLink={getSelectedLink}>
         <div dangerouslySetInnerHTML={createMarkup(page.html)} />
