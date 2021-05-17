@@ -7,6 +7,7 @@ import { IPageProps } from './_app';
 export default function DynamicPage (props: IPageProps) {
   const router = useRouter();
   const { pageSlug } = router.query;
+  // TODO: how can we make this better
   if (typeof pageSlug === "string") {
     return (
     <PageContainer pageSlug={ pageSlug } pages={props.pages} />
