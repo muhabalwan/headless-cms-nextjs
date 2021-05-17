@@ -9,19 +9,21 @@ import { PostsOrPages } from '@tryghost/content-api';
 export interface IPageProps {
   pages: PostsOrPages,
   posts: PostsOrPages,
-  selectedProps: string,
 }
 
 interface IMyAppProps {
-  Component: React.FunctionComponent,
+  Component: React.FunctionComponent<IPageProps>,
   pageProps: IPageProps,
 }
 
-function MyApp({ Component, pageProps }: IMyAppProps) {
-  const [selectedPageId, setSelectedPageId] = useState("60827a29647814089c944f5b");
 
+export interface ISelectedPageId {
+  selectedPageId: string;
+}
+
+function MyApp({ Component, pageProps }: IMyAppProps) {
   return (
-      <Component {...pageProps}  selectedPageId={selectedPageId} />
+      <Component {...pageProps}  />
   )
 }
 
