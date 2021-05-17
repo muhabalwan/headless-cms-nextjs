@@ -1,23 +1,23 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react';
-import Layout from '../components/Layout';
-import { getPage, getPages } from './api/page';
+import { getPages } from './api/page';
 import { getPosts } from './api/post';
 import PageContainer from './PageContainer';
+import { IPageProps } from './_app';
 
-export default function DynamicPage (props) {
+export default function DynamicPage (props: IPageProps) {
   const router = useRouter();
   const { pageSlug } = router.query;
-   return (
-      <PageContainer pageSlug={ pageSlug } pages={props.pages} />
+  if (typeof pageSlug === "string") {
+    return (
+    <PageContainer pageSlug={ pageSlug } pages={props.pages} />
     )
+  }
+  return false;
 }
-
-
 
 export const getStaticPaths = async () => {
   const pages = await getPages();
-  const paths = pages.map(page => {
+  const paths = pages && pages.map(page => {
     return {
       params: {
         pageSlug: page.slug
@@ -30,19 +30,9 @@ export const getStaticPaths = async () => {
   }
 }
 
-// export async function getStaticPaths() {
-//   const paths = [];
-//   return {
-//     paths,
-//     fallback: false
-//   }
-// }
-
 export const getStaticProps = async () => {
   const posts = await getPosts();
   const pages = await getPages();
-  console.log('props pages -->', pages)
-
   return {
     props: { posts, pages: pages }
   }

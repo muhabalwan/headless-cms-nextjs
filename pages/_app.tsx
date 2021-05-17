@@ -1,18 +1,24 @@
 import '../styles/global.css'
 import '../styles/screen.css'
 
-
-import Layout from '../components/Layout';
-// import { getPages } from './api/page';
-
+import React, { Component } from 'react';
 import { useState } from 'react';
+import { PostsOrPages } from '@tryghost/content-api';
 
-function MyApp({ Component, pageProps }) {
+
+export interface IPageProps {
+  pages: PostsOrPages,
+  posts: PostsOrPages,
+  selectedProps: string,
+}
+
+interface IMyAppProps {
+  Component: React.FunctionComponent,
+  pageProps: IPageProps,
+}
+
+function MyApp({ Component, pageProps }: IMyAppProps) {
   const [selectedPageId, setSelectedPageId] = useState("60827a29647814089c944f5b");
-
-  const getSelectedLink = (selectedLink) => {
-    setSelectedPageId(selectedLink.id);
-  }
 
   return (
       <Component {...pageProps}  selectedPageId={selectedPageId} />

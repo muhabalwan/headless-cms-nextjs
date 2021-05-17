@@ -1,14 +1,22 @@
 import navStyles from '../styles/Nav.module.css';
 import Link from 'next/link';
-import React from 'react';
+import React, { MouseEvent } from 'react';
+import { PostsOrPages } from '@tryghost/content-api';
+import { ISelectedLink } from '../pages/PageContainer';
 
-export default function Nav(props) {
+interface INavProps {
+    pages: PostsOrPages,
+    getSelectedLink: (el: ISelectedLink) => void
+}
+
+export default function Nav(props: INavProps) {
     const navElements = props?.pages?.map(page => {
         return { title: page.title, slug: page.slug, id: page.id };
     });
 
-    const getSelectedLink = (e, el) => {
+    const getSelectedLink = (e: MouseEvent, el: ISelectedLink) => {
         props.getSelectedLink(el);
+
     }
 
     return (
