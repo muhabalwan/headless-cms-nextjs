@@ -1,7 +1,5 @@
 import GhostContentAPI from "@tryghost/content-api";
 
-// Create API instance with site credentials
-// TODO remove api to Global File
 const api = new GhostContentAPI({
   url: process.env["NEXT_PUBLIC_BLOG_URL"] || "",
   key: process.env["NEXT_PUBLIC_CONTENT_API_KEY"] || "",
@@ -15,7 +13,6 @@ export const getPage = async (id: string) => {
     });
   return page;
 };
-
 
 
 export const getPages = async () => {

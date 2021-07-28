@@ -3,12 +3,18 @@ import '../styles/screen.css'
 
 import React, { Component } from 'react';
 import { useState } from 'react';
-import { PostsOrPages } from '@tryghost/content-api';
+import { PostsOrPages, Settings } from '@tryghost/content-api';
 
 
+
+export type INavList = Array<{
+  label: string;
+  url: string;
+}>
 export interface IPageProps {
   pages: PostsOrPages,
   posts: PostsOrPages,
+  navList: INavList
 }
 
 interface IMyAppProps {
@@ -23,7 +29,7 @@ export interface ISelectedPageId {
 
 function MyApp({ Component, pageProps }: IMyAppProps) {
   return (
-      <Component {...pageProps}  />
+    <Component {...pageProps} />
   )
 }
 
