@@ -7,7 +7,6 @@ import { IPageProps } from './_app';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
 export default function DynamicPage(props: IPageProps) {
   const router = useRouter();
   const { pageSlug } = router.query;

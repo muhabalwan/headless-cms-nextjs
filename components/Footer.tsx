@@ -1,18 +1,30 @@
 
-import styles from '../styles/Footer.module.css'
+import styled from 'styled-components';
+
+const StyledFooter = styled.footer`
+  background: #000;
+  color: #fff;
+  a {
+    color: #fff;
+  }
+
+  img {
+    background: gray;
+  }`;
+
+
 const Footer = () => {
-    return (
-        <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by
-          <img src="/vercel.svg" alt="Vercel Logo" />
-        </a>
-      </footer>
-    )
+  return (
+    <StyledFooter>
+      <a
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Powered by Creative Devs
+      </a>
+    </StyledFooter>
+  )
 }
 
 export default Footer

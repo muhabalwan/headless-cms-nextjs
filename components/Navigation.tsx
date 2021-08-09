@@ -1,18 +1,38 @@
 import navStyles from '../styles/Navigation.module.css';
 import Link from 'next/link';
-import React, { MouseEvent } from 'react';
-import { ISelectedLink } from '../pages/PageContainer';
+import React from 'react';
 import { INavList } from '../pages/_app';
+import styled from 'styled-components';
 
 interface INavProps {
     navList: INavList
 }
 
+const StyledNav = styled.nav`
+    height: 50px;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    a {
+        color: white;
+    }
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+    }
+    ul li a {
+        padding-left: 10px;
+    }
+`;
+
 export default function Navigation(props: INavProps) {
-
-
     return (
-        <nav className={navStyles.nav}>
+        <StyledNav>
             <ul>
                 {
                     props?.navList?.map(el => {
@@ -24,7 +44,7 @@ export default function Navigation(props: INavProps) {
                     })
                 }
             </ul>
-        </nav>
+        </StyledNav>
     )
 }
 
