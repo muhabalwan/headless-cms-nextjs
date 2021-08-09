@@ -4,15 +4,20 @@ import { getContentSettings } from './api/contentSettings';
 import { getPosts } from './api/post';
 import PageContainer from './PageContainer';
 import { IPageProps } from './_app';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 
 export default function DynamicPage(props: IPageProps) {
   const router = useRouter();
   const { pageSlug } = router.query;
-  // TODO: how can we make this better
   if (typeof pageSlug === "string") {
     return (
-      <PageContainer pageSlug={pageSlug} pages={props.pages} navList={props.navList}/>
+      <>
+        <Header navList={props.navList} />
+        <PageContainer pageSlug={pageSlug} pages={props.pages} />
+        <Footer />
+      </>
     )
   }
   return false;

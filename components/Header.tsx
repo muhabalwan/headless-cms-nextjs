@@ -1,8 +1,14 @@
-import headerStyle from '../styles/Header.module.css';
 import Head from 'next/head'
-import Nav from './Nav';
+import Navigation from './Navigation';
+import { ISelectedLink } from '../pages/PageContainer';
+import { INavList } from '../pages/_app';
 
-const Header = () => {
+
+interface IHeader {
+    navList: INavList
+}
+
+const Header = ({navList}: IHeader) => {
     return (
         <>
         <Head>
@@ -10,6 +16,7 @@ const Header = () => {
             <meta name="myProfile" content="web development, freelance, muhab alwan profile, javascript developer, frontend" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
+        <Navigation navList={navList} />
         </>
 
     )
